@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>BLACKPINK | JENNIE — ULTIMATE FANVERSE by Лейла</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #f0f0f0;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --pink-primary: #ff44a0;
+            --pink-glow: #ff6bb5;
+            --pink-dark: #d4317c;
+            --black-deep: #0a0a0f;
+            --black-soft: #111116;
+            --gray-card: #17171f;
+            --border-light: rgba(255, 68, 160, 0.4);
+            --shadow-lg: 0 25px 40px -12px rgba(0, 0, 0, 0.7);
+            --shadow-pink: 0 0 20px rgba(255, 68, 160, 0.4);
+            --gold: #ffd966;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 68, 160, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 68, 160, 0.9); }
+        }
+        
+        @keyframes beatPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 68, 160, 0.4); border-color: rgba(255, 68, 160, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(255, 68, 160, 0.2), 0 0 30px rgba(255, 68, 160, 0.6); border-color: rgba(255, 68, 160, 0.9); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 68, 160, 0); border-color: rgba(255, 68, 160, 0.4); }
+        }
+        
+        @keyframes buttonBeat {
+            0% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 160, 0.5); }
+            50% { transform: scale(1.08); box-shadow: 0 0 20px rgba(255, 68, 160, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 5px rgba(255, 68, 160, 0.5); }
+        }
+        
+        .player-container.playing {
+            animation: beatPulse 0.8s ease-in-out infinite;
+            border-radius: 48px;
+        }
+        
+        .play-pulse {
+            animation: buttonBeat 0.6s ease-in-out infinite;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 68, 160, 0.4);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 15, 0.9);
+            z-index: 1000;
+        }
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff, var(--pink-primary), #ffb3d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            color: var(--pink-primary);
+            font-weight: 600;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--pink-primary);
+        }
+
+        .hero-jennie {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            margin: 70px 0 90px;
+        }
+        .jennie-info { flex: 1.2; }
+        .jennie-badge {
+            background: rgba(255, 68, 160, 0.2);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--pink-primary);
+            margin-bottom: 24px;
+        }
+        .jennie-info h2 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .jennie-info h2 .highlight {
+            color: var(--pink-primary);
+            border-bottom: 4px solid var(--pink-primary);
+        }
+        .jennie-desc {
+            font-size: 1.2rem;
+            color: #c0c0cf;
+            margin-bottom: 28px;
+            max-width: 550px;
+        }
+        .stats {
+            display: flex;
+            gap: 45px;
+            margin: 30px 0;
+        }
+        .stat-item h4 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--pink-primary);
+        }
+        .jennie-photo img {
+            max-width: 100%;
+            width: 420px;
+            border-radius: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--pink-primary);
+            transition: 0.4s;
+        }
+        .jennie-photo img:hover { transform: scale(1.02); }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-glow));
+            border: none;
+            padding: 14px 38px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #0a0a0f;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 68, 160, 0.5);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 68, 160, 0.9);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--pink-primary);
+            padding: 12px 38px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 68, 160, 0.25);
+            transform: scale(1.02);
+        }
+
+        .leyla-section {
+            background: linear-gradient(145deg, #0f0f18, #0a0a10);
+            border-radius: 56px;
+            margin: 90px 0;
+            padding: 55px 40px;
+            border: 1px solid var(--pink-primary);
+            box-shadow: var(--shadow-pink);
+        }
+        .leyla-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .leyla-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--pink-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .members-description-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 55px;
+        }
+        .leyla-member-card {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            width: 260px;
+            padding: 24px 16px 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 68, 160, 0.3);
+        }
+        .leyla-member-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--pink-primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        .member-avatar {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--pink-primary);
+            box-shadow: 0 0 15px rgba(255, 68, 160, 0.3);
+        }
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .voice-message-block {
+            background: linear-gradient(135deg, #140c1a, #0a0610);
+            border-radius: 48px;
+            padding: 40px 35px;
+            margin-top: 20px;
+            border: 1px solid var(--pink-primary);
+            text-align: center;
+        }
+        .voice-progress-area {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .voice-progress-wrapper {
+            flex: 1;
+            min-width: 250px;
+            cursor: pointer;
+        }
+        .voice-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .voice-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-glow));
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .voice-time {
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: #aaa;
+            min-width: 85px;
+        }
+
+        .facts-section {
+            background: linear-gradient(135deg, #0f0f1a, #0a0a12);
+            border-radius: 56px;
+            margin: 90px 0;
+            padding: 55px 40px;
+            border: 1px solid var(--pink-primary);
+            box-shadow: var(--shadow-pink);
+        }
+        .facts-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .facts-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--pink-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .fact-card {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 68, 160, 0.3);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .fact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink-primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .fact-number {
+            background: var(--pink-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0a0a0f;
+            flex-shrink: 0;
+        }
+        .fact-content {
+            flex: 1;
+        }
+        .fact-content h3 {
+            font-size: 1.3rem;
+            color: var(--pink-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .fact-content p {
+            color: #d0d0e0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .fact-source {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-player-section {
+            background: linear-gradient(145deg, #111116, #0c0c12);
+            border-radius: 48px;
+            padding: 55px 45px;
+            margin: 80px 0;
+            border: 1px solid var(--pink-primary);
+            box-shadow: var(--shadow-pink);
+        }
+        .player-container {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 40px;
+            padding: 30px;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+        .current-track-info {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .current-track-info h4 {
+            font-size: 1.5rem;
+            color: var(--pink-primary);
+            margin-bottom: 8px;
+        }
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .time-current, .time-duration {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-family: monospace;
+            min-width: 45px;
+        }
+        .progress-bar-wrapper {
+            flex: 1;
+            min-width: 200px;
+            cursor: pointer;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-glow));
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0 20px;
+        }
+        .player-control-btn {
+            background: rgba(255, 68, 160, 0.2);
+            border: 1px solid var(--pink-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .player-control-btn:hover {
+            background: var(--pink-primary);
+            color: #0a0a0f;
+            transform: scale(1.05);
+        }
+        .player-control-btn.pulsing {
+            animation: buttonBeat 0.6s ease-in-out infinite;
+        }
+        .stop-all-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid #888;
+            padding: 10px 24px;
+            border-radius: 60px;
+            color: #ddd;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .stop-all-btn:hover {
+            background: #ff4444;
+            border-color: #ff4444;
+            color: white;
+        }
+        .playlist-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 68, 160, 0.3);
+        }
+        .playlist-item {
+            background: rgba(255, 68, 160, 0.1);
+            border: 1px solid rgba(255, 68, 160, 0.3);
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .playlist-item:hover, .playlist-item.active {
+            background: var(--pink-primary);
+            color: #0a0a0f;
+            border-color: var(--pink-primary);
+        }
+
+        .fan-mega-section {
+            background: radial-gradient(circle at 30% 20%, #120c1a, #050308);
+            border-radius: 60px;
+            padding: 70px 50px;
+            margin: 80px 0;
+            border: 2px solid var(--pink-primary);
+            box-shadow: 0 0 40px rgba(255, 68, 160, 0.3);
+        }
+        .fan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 45px;
+            margin-top: 55px;
+        }
+        .fan-card {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 35px 25px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 68, 160, 0.4);
+        }
+        .fan-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--pink-primary);
+        }
+        .fan-img {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--pink-primary);
+        }
+        .fan-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fan-card h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: var(--pink-primary);
+        }
+
+        .dream-collabs-section {
+            background: linear-gradient(135deg, #0a0a1a, #0f0a18);
+            border-radius: 60px;
+            padding: 70px 50px;
+            margin: 80px 0;
+            border: 2px solid var(--gold);
+        }
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 55px;
+        }
+        .collab-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 30px 25px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 221, 102, 0.4);
+        }
+        .collab-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--gold);
+        }
+        .collab-img {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--gold);
+        }
+        .collab-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .collab-card h3 {
+            font-size: 1.9rem;
+            color: var(--gold);
+        }
+
+        .members-section, .jennie-style-section, .quotes-slider, footer {
+            margin: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .section-title span { color: var(--pink-primary); }
+        .section-sub { text-align: center; color: #aaa; margin-bottom: 45px; }
+        .members-grid, .style-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .member-card, .style-item {
+            background: var(--gray-card);
+            border-radius: 32px;
+            overflow: hidden;
+            width: 260px;
+            transition: 0.3s;
+            border: 1px solid #2a2a34;
+        }
+        .member-card:hover, .style-item:hover { transform: translateY(-10px); border-color: var(--pink-primary); }
+        .member-card img, .style-item img { width: 100%; height: 300px; object-fit: cover; }
+        .member-info, .style-caption { padding: 16px; text-align: center; font-weight: 700; color: var(--pink-primary); }
+        .quotes-slider {
+            background: linear-gradient(135deg, #0e0e16, #0a0a10);
+            border-radius: 48px;
+            padding: 50px;
+            text-align: center;
+        }
+        .quote-text { font-size: 1.5rem; font-style: italic; max-width: 800px; margin: 20px auto; }
+        .quote-author { color: var(--pink-primary); font-weight: 800; }
+        .quote-nav button {
+            background: none; border: 1.5px solid var(--pink-primary); color: white;
+            width: 48px; height: 48px; border-radius: 50%; cursor: pointer; margin: 0 8px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 25px 0;
+            font-size: 1.8rem;
+        }
+        .social-icons a { color: #ccc; transition: 0.2s; }
+        .social-icons a:hover { color: var(--pink-primary); transform: translateY(-3px); }
+        footer { border-top: 1px solid rgba(255,68,160,0.3); padding: 40px 0; text-align: center; }
+        
+        @media (max-width: 850px) {
+            .hero-jennie { flex-direction: column-reverse; text-align: center; }
+            .stats { justify-content: center; }
+            .fan-grid, .collab-grid, .facts-grid { grid-template-columns: 1fr; }
+            .fan-img, .collab-img { width: 180px; height: 180px; }
+            .fact-card { flex-direction: column; align-items: center; text-align: center; }
+            .fact-number { margin: 0 auto 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <div class="logo"><h1>BLΛƆKPINK</h1><span>🔥 LEYLA’S JENNIE MULTIVERSE 🔥</span></div>
+        <div class="nav-links">
+            <a href="#" class="active">Главная</a>
+            <a href="#members">Шестёрки</a>
+            <a href="#leyla">Описание участниц</a>
+            <a href="#facts">Факты о Jennie</a>
+            <a href="#music">SOLO Музыка</a>
+            <a href="#style">JENNIE STYLE</a>
+            <a href="#fans">FAN ARMY</a>
+            <a href="#collabs">КОЛЛАБОРАЦИИ</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-jennie animate-on-scroll">
+        <div class="jennie-info">
+            <div class="jennie-badge"><i class="fas fa-crown"></i> QUEEN OF K-POP</div>
+            <h2>JENNIE <span class="highlight">RUBY JANE</span></h2>
+            <p class="jennie-desc">Рэп-королева, икона стиля, главная муза Лейлы. Jennie Kim объединяет вселенные.</p>
+            <div class="stats">
+                <div class="stat-item"><h4>140M+</h4><p>ПОДПИСЧИКОВ</p></div>
+                <div class="stat-item"><h4>#SOLO</h4><p>BILLION VIEWS</p></div>
+                <div class="stat-item"><h4>50+</h4><p>НАГРАД</p></div>
+            </div>
+            <div class="btn-group">
+                <button class="btn-primary" id="soloTrigger"><i class="fab fa-spotify"></i> SOLO POWER</button>
+                <button class="btn-outline" id="jennieFactBtn"><i class="fas fa-star"></i> Факты о Дженни</button>
+            </div>
+        </div>
+        <div class="jennie-photo">
+            <img src="Jennie1.gif" alt="Jennie Kim" onerror="this.src='https://placehold.co/500x600/1e1e2a/ff44a0?text=Jennie1.gif'">
+        </div>
+    </div>
+
+    <!-- Шестёрки Дженни -->
+    <div id="members" class="members-section animate-on-scroll">
+        <div class="section-title"> ШЕСТЁРКИ <span>✦ JENNIE ✦</span></div>
+        <div class="section-sub">Верные соратницы — легендарные шестёрки королевы Дженни</div>
+        <div class="members-grid">
+            <div class="member-card"><img src="bp2.gif" onerror="this.src='https://placehold.co/400x500/222/ff44a0?text=Lisa'"><div class="member-info"><h3>Lisa</h3><div>Вечная тень</div></div></div>
+            <div class="member-card"><img src="bp3.gif" onerror="this.src='https://placehold.co/400x500/222/ff44a0?text=Jisoo'"><div class="member-info"><h3>Jisoo</h3><div>Ангел-хранительница</div></div></div>
+            <div class="member-card"><img src="bp4.gif" onerror="this.src='https://placehold.co/400x500/222/ff44a0?text=Rosé'"><div class="member-info"><h3>Rosé</h3><div>Голос, вдохновленный Jennie</div></div></div>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ: Описание участниц -->
+    <div id="leyla" class="leyla-section animate-on-scroll">
+        <div class="leyla-header">
+            <h2><i class="fas fa-microphone-alt"></i> Описание участниц</h2>
+            <div class="sub"> Голос сердца — описание каждой айлин от нашей создательницы Лейлы</div>
+        </div>
+        <div class="members-description-grid">
+            <div class="leyla-member-card">
+                <div class="member-avatar"><img src="bp1.gif" onerror="this.src='https://placehold.co/200x200/222/ff44a0?text=Jennie'"></div>
+                <h3>Jennie</h3>
+                <div class="member-position">✨ Main Rapper · Vocalist · Face of Chanel</div>
+                <div class="member-mini-bio">Королева харизмы. Дженни — это огонь, стиль и бесконечная уверенность.</div>
+            </div>
+            <div class="leyla-member-card">
+                <div class="member-avatar"><img src="bp2.gif" onerror="this.src='https://placehold.co/200x200/222/ff44a0?text=Lisa'"></div>
+                <h3>Lisa</h3>
+                <div class="member-position">💃 Main Dancer · Rapper · Queen of Stage</div>
+                <div class="member-mini-bio">Энергия, танец и улыбка, которая покоряет миллионы. Но улыбка Дженни покоряет больше</div>
+            </div>
+            <div class="leyla-member-card">
+                <div class="member-avatar"><img src="bp3.gif" onerror="this.src='https://placehold.co/200x200/222/ff44a0?text=Jisoo'"></div>
+                <h3>Jisoo</h3>
+                <div class="member-position">🌸 Lead Vocalist · Visual · К-драма актриса</div>
+                <div class="member-mini-bio">Нежность и сила в одном лице. Ей далеко до красоты Дженни.</div>
+            </div>
+            <div class="leyla-member-card">
+                <div class="member-avatar"><img src="bp4.gif" onerror="this.src='https://placehold.co/200x200/222/ff44a0?text=Rosé'"></div>
+                <h3>Rosé</h3>
+                <div class="member-position">🎤 Main Vocalist · Guitar · Golden Voice</div>
+                <div class="member-mini-bio">Голос, который проникает в душу. Но голос Дженни прекраснее.</div>
+            </div>
+        </div>
+        <div class="voice-message-block">
+            <div class="voice-header" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px;">
+                <i class="fas fa-head-side-vr" style="font-size: 2.2rem; color: var(--pink-primary);"></i>
+                <h3 style="font-size: 1.6rem;">🎙️ Лейла <span style="color: var(--pink-primary);">об участницах BLACKPINK</span></h3>
+            </div>
+            <div class="voice-player">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px;">
+                    <button class="play-voice-btn" id="playLeilaVoiceBtn" style="background: var(--pink-primary); border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 1.6rem; color: #0a0a0f; cursor: pointer;"><i class="fas fa-play"></i></button>
+                    <audio id="leilaAudio" src="leila.mp3" preload="metadata"></audio>
+                    <span style="color: #ff88b0;"><i class="fas fa-microphone-alt"></i> leila — Описание участниц</span>
+                </div>
+                <div class="voice-progress-area" id="voiceProgressArea">
+                    <span class="voice-time" id="voiceCurrentTime">0:00</span>
+                    <div class="voice-progress-wrapper" id="voiceProgressWrapper">
+                        <div class="voice-progress-bar">
+                            <div class="voice-progress-fill" id="voiceProgressFill"></div>
+                        </div>
+                    </div>
+                    <span class="voice-time" id="voiceDuration">0:00</span>
+                </div>
+                <div class="voice-status" id="voiceStatus" style="margin-top: 20px; font-size: 0.95rem;">📢 Нажмите ▶, чтобы услышать, как Лейла описывает Jennie, Lisa, Jisoo и Rosé</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- НОВЫЙ РАЗДЕЛ: РЕАЛЬНЫЕ ФАКТЫ О ДЖЕННИ -->
+    <div id="facts" class="facts-section animate-on-scroll">
+        <div class="facts-header">
+            <h2><i class="fas fa-star-of-life"></i> РЕАЛЬНЫЕ ФАКТЫ <span>О ДЖЕННИ</span></h2>
+            <p>📜 Подтверждённые факты из биографии королевы K-pop</p>
+        </div>
+        <div class="facts-grid">
+            <div class="fact-card"><div class="fact-number">1</div><div class="fact-content"><h3>Родилась в Новой Зеландии</h3><p>Jennie Kim родилась 16 января 1996 года в Сеуле, но провела детство в Новой Зеландии, где училась в престижной школе ACG Parnell College. Она свободно говорит на корейском, английском и японском языках.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: интервью Vogue Korea, 2020</div></div></div>
+            <div class="fact-card"><div class="fact-number">2</div><div class="fact-content"><h3>Тренировалась 6 лет</h3><p>Jennie прошла самый долгий тренировочный период среди участниц BLACKPINK — 6 лет (с 2010 по 2016). Она была первой, кто присоединился к YG Entertainment среди будущих участниц группы.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: YG Entertainment официально</div></div></div>
+            <div class="fact-card"><div class="fact-number">3</div><div class="fact-content"><h3>Первая солистка YG после 2NE1</h3><p>В 2018 году Jennie стала первой солисткой YG Entertainment после CL из 2NE1. Её дебютный сингл "SOLO" собрал более 1 миллиарда просмотров на YouTube и возглавил все корейские чарты.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: Gaon Chart, YouTube Official</div></div></div>
+            <div class="fact-card"><div class="fact-number">4</div><div class="fact-content"><h3>Глобальный амбассадор Chanel</h3><p>В 2017 году Jennie стала глобальным амбассадором французского дома Chanel. Она — самая молодая корейская знаменитость, получившая этот титул. Её часто называют "Human Chanel".</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: Chanel Official Announcement</div></div></div>
+            <div class="fact-card"><div class="fact-number">5</div><div class="fact-content"><h3>Первая в Instagram среди K-pop</h3><p>Jennie стала первой корейской айдолкой, достигшей 10, 20, 30 и 40 миллионов подписчиков в Instagram. На сегодняшний день у неё более 140 миллионов подписчиков.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: Instagram Analytics</div></div></div>
+            <div class="fact-card"><div class="fact-number">6</div><div class="fact-content"><h3>Коллаборация с The Weeknd</h3><p>В 2023 году Jennie записала трек "One Of The Girls" вместе с The Weeknd и Lily-Rose Depp для сериала "The Idol". Песня стала вирусной и вошла в топ-10 Billboard Global 200.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: Billboard Chart, HBO</div></div></div>
+            <div class="fact-card"><div class="fact-number">7</div><div class="fact-content"><h3>Владеет собственной компанией</h3><p>В декабре 2023 года Jennie основала собственный лейбл "ODD ATELIER" (OA), став первой участницей BLACKPINK, которая создала индивидуальную компанию для сольной деятельности.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: ODD ATELIER Official</div></div></div>
+            <div class="fact-card"><div class="fact-number">8</div><div class="fact-content"><h3>Любит собак и фигурное катание</h3><p>У Jennie есть две собаки — кай-кен по кличке Kuma и померанский шпиц KAI. В детстве она занималась фигурным катанием и даже хотела стать профессиональной фигуристкой. Любит кататься на лошадях</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: интервью W Korea, 2021</div></div></div>
+            <div class="fact-card"><div class="fact-number">9</div><div class="fact-content"><h3>Участвовала в записи до дебюта</h3><p>До дебюта в BLACKPINK Jennie участвовала в записи трека "GG BE" (2013) с G-Dragon и фигурировала в клипе Lee Hi "Special" (2013).</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: YG Entertainment Archives</div></div></div>
+            <div class="fact-card"><div class="fact-number">10</div><div class="fact-content"><h3>Многократный рекордсмен YouTube</h3><p>MV "SOLO" стал самым просматриваемым дебютным клипом корейской сольной исполнительницы за первые 24 часа. Клипы BLACKPINK с участием Jennie набрали суммарно более 20 миллиардов просмотров.</p><div class="fact-source"><i class="fas fa-check-circle"></i> Источник: YouTube Records, Guinness World Records</div></div></div>
+        </div>
+    </div>
+
+    <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+    <div id="music" class="music-player-section animate-on-scroll">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px; text-align: center;"><i class="fas fa-music"></i> JENNIE — Шедевры</h3>
+        <div class="player-container" id="playerContainer">
+            <div class="current-track-info"><h4 id="currentTrackName">Выберите трек</h4></div>
+            <div class="progress-container">
+                <span class="time-current" id="currentTime">0:00</span>
+                <div class="progress-bar-wrapper" id="progressBarWrapper"><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+                <span class="time-duration" id="duration">0:00</span>
+            </div>
+            <div class="player-controls">
+                <button class="player-control-btn" id="prevBtn"><i class="fas fa-backward-step"></i></button>
+                <button class="player-control-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
+                <button class="player-control-btn" id="nextBtn"><i class="fas fa-forward-step"></i></button>
+            </div>
+            <div style="text-align: center; margin-top: 15px;"><button class="stop-all-btn" id="stopMusicBtn"><i class="fas fa-stop"></i> Остановить</button></div>
+            <div class="playlist-grid" id="playlistGrid"></div>
+        </div>
+        <p style="margin-top: 25px; font-size: 0.85rem; text-align: center; opacity: 0.7;"><i class="fas fa-info-circle"></i> Спонсор бесплатного прослушивания - асланчик :)</p>
+    </div>
+
+    <!-- Цитаты Лейлы -->
+    <div class="quotes-slider animate-on-scroll">
+        <i class="fas fa-quote-right" style="font-size: 2.5rem; color: #ff44a0;"></i>
+        <div class="quote-text" id="quoteText">"Ты не ты, когда нет Дженни."</div>
+        <div class="quote-author" id="quoteAuthor">— Лейла</div>
+        <div class="quote-nav"><button id="prevQuoteBtn"><i class="fas fa-chevron-left"></i></button><button id="nextQuoteBtn"><i class="fas fa-chevron-right"></i></button></div>
+    </div>
+
+    <!-- JENNIE STYLE -->
+    <div id="style" class="jennie-style-section animate-on-scroll">
+        <div class="section-title">JENNIE <span>✦ STYLE</span></div>
+        <div class="section-sub">Икона моды — каждый образ Дженни становится легендой</div>
+        <div class="style-grid">
+            <div class="style-item"><img src="bp1.gif" onerror="this.src='https://placehold.co/400x500/111/ff44a0?text=Jennie+Style+1'"><div class="style-caption">✨ Jennie · Элегантность</div></div>
+            <div class="style-item"><img src="jennie_outfit2.gif" onerror="this.src='https://placehold.co/400x500/111/ff44a0?text=Style+2'"><div class="style-caption">👼 Jennie · Angel</div></div>
+            <div class="style-item"><img src="jennie_outfit3.gif" onerror="this.src='https://placehold.co/400x500/111/ff44a0?text=Style+3'"><div class="style-caption">💖 Jennie · Red</div></div>
+            <div class="style-item"><img src="jennie_outfit4.gif" onerror="this.src='https://placehold.co/400x500/111/ff44a0?text=Style+4'"><div class="style-caption">🤍 Jennie · White</div></div>
+        </div>
+    </div>
+
+    <!-- FAN ARMY -->
+    <div id="fans" class="fan-mega-section animate-on-scroll">
+        <div class="section-title" style="font-size: 2.8rem;">👑 JENNIE'S <span>LEGENDARY FAN ARMY</span> 👑</div>
+        <div class="section-sub">Культовые личности, влюблённые в королеву K-pop — Jennie Kim</div>
+        <div class="fan-grid">
+            <div class="fan-card"><div class="fan-img"><img src="central.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Central+Cee'"></div><h3>Central Cee <i class="fab fa-uk"></i></h3><p class="fan-desc">Британский рэпер, король дрилла. Открытый фанат BLACKPINK и Дженни.</p><span class="fan-tag"><i class="fas fa-crown"></i> UK Ambassador</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="sasuke.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Sasuke+Uchiha'"></div><h3>Sasuke Uchiha <i class="fas fa-shuriken"></i></h3><p class="fan-desc">Легендарный ниндзя, обладатель Шарингана. Тайный поклонник Jennie.</p><span class="fan-tag"><i class="fas fa-eye"></i> Eternal Mangekyo Fan</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="ben.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Ben+10'"></div><h3>Ben 10 <i class="fas fa-clock"></i></h3><p class="fan-desc">Герой Омнитрикса. Ben обожает Дженни за её многогранность.</p><span class="fan-tag"><i class="fas fa-bolt"></i> Omnitrix Blink</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="blum.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Bloom+Winx'"></div><h3>Bloom <i class="fas fa-dragon"></i></h3><p class="fan-desc">Принцесса Домино, Хранительница Огня Дракона.</p><span class="fan-tag"><i class="fas fa-fire"></i> Dragon Flame Blink</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="neymar.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Neymar+Jr'"></div><h3>Neymar Jr <i class="fas fa-futbol"></i></h3><p class="fan-desc">Легенда бразильского футбола. Неймар — огромный фанат BLACKPINK и Дженни!</p><span class="fan-tag"><i class="fas fa-trophy"></i> Brazilian Icon</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="weekend.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=The+Weeknd'"></div><h3>The Weeknd <i class="fas fa-moon"></i></h3><p class="fan-desc">Король R&B. Коллаборация с Jennie в треке "One Of The Girls" стала мировым событием!</p><span class="fan-tag"><i class="fas fa-star"></i> XO · Collab Partner</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="billie.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Billie+Eilish'"></div><h3>Billie Eilish <i class="fas fa-ghost"></i></h3><p class="fan-desc">Гений альтернативной поп-музыки. Billie обожает BLACKPINK и Дженни.</p><span class="fan-tag"><i class="fas fa-heart"></i> Dark Blink</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="ariana.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=Ariana+Grande'"></div><h3>Ariana Grande <i class="fas fa-cloud-moon"></i></h3><p class="fan-desc">Поп-принцесса, икона стиля. Ariana обожает K-pop и особенно выделяет Дженни.</p><span class="fan-tag"><i class="fas fa-highlighter"></i> Sweetener Blink</span></div>
+            <div class="fan-card"><div class="fan-img"><img src="dragon.gif" onerror="this.src='https://placehold.co/400x400/222/ff44a0?text=G-Dragon'"></div><h3>G-Dragon <i class="fas fa-dragon"></i></h3><p class="fan-desc">Король K-pop, легенда YG. Вдохновлён Jennie</p><span class="fan-tag"><i class="fas fa-crown"></i> King of K-pop</span></div>
+        </div>
+        <p style="text-align: center; margin-top: 55px; font-size: 1.2rem;"><i class="fas fa-heart" style="color:#ff44a0;"></i> Эти легенды объединились в фан-клубе Jennie, созданном Лейлой <i class="fas fa-heart" style="color:#ff44a0;"></i></p>
+    </div>
+
+    <!-- КОЛЛАБОРАЦИИ МЕЧТЫ -->
+    <div id="collabs" class="dream-collabs-section animate-on-scroll">
+        <div class="section-title" style="font-size: 2.8rem;">✨ КОЛЛАБОРАЦИИ МЕЧТЫ <span>aslanchik&leila</span> ✨</div>
+        <div class="section-sub">Кто бы мог представить эти звёздные дуэты с Дженни? Только наша фантазия безгранична!</div>
+        <div class="collab-grid">
+            <div class="collab-card"><div class="collab-img"><img src="jude.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Jude+Bellingham'"></div><h3>Jude Bellingham <i class="fas fa-futbol"></i></h3><p class="collab-desc">Английский феномен, звезда Реал Мадрида. Джуд слушает BLACKPINK перед матчами.</p><span class="collab-tag"><i class="fas fa-crown"></i> Midfield Magician</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="ronaldo.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Cristiano+Ronaldo'"></div><h3>Cristiano Ronaldo <i class="fas fa-futbol"></i></h3><p class="collab-desc">Легенда футбола. CR7 однажды опубликовал фото с концерта BLACKPINK.</p><span class="collab-tag"><i class="fas fa-trophy"></i> GOAT · SIUUU</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="mbappe.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Kylian+Mbappe'"></div><h3>Kylian Mbappé <i class="fas fa-futbol"></i></h3><p class="collab-desc">Французский гений, чемпион мира. Мбаппе известен любовью к K-pop.</p><span class="collab-tag"><i class="fas fa-bolt"></i> Bondy Blink</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="vini.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Vinicius+Jr'"></div><h3>Vinicius Jr <i class="fas fa-futbol"></i></h3><p class="collab-desc">Бразильский волшебник. Винисиус обожает музыку и стиль BLACKPINK.</p><span class="collab-tag"><i class="fas fa-magic"></i> Brazilian Wizard</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="carti.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Playboi+Carti'"></div><h3>Playboi Carti <i class="fas fa-skull"></i></h3><p class="collab-desc">Икона нового рэпа. Carti и Jennie — идеальный мэшап стиля и харизмы.</p><span class="collab-tag"><i class="fas fa-crown"></i> Opium Blink</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="rihanna.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Rihanna'"></div><h3>Rihanna <i class="fas fa-gem"></i></h3><p class="collab-desc">Королева музыки и моды. Рианна уже носила бренд Jennie.</p><span class="collab-tag"><i class="fas fa-crown"></i> Fenty Blink</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="lamar.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Kendrick+Lamar'"></div><h3>Kendrick Lamar <i class="fas fa-crown"></i></h3><p class="collab-desc">Гений хип-хопа. Кендрик ценит артистов с глубиной.</p><span class="collab-tag"><i class="fas fa-microphone-alt"></i> Pulitzer Blink</span></div>
+            <div class="collab-card"><div class="collab-img"><img src="zara.gif" onerror="this.src='https://placehold.co/400x400/222/ffcc33?text=Zara+Larsson'"></div><h3>Zara Larsson <i class="fas fa-music"></i></h3><p class="collab-desc">Шведская поп-звезда, обладательница миллиардов стримов. Zara — настоящий Blink!</p><span class="collab-tag"><i class="fas fa-heart"></i> Nordic Power</span></div>
+        </div>
+        <p style="text-align: center; margin-top: 50px; font-size: 1.1rem; color: var(--gold);"><i class="fas fa-star"></i> aslanchik & leila — ваш билет в мир безграничных коллабораций! <i class="fas fa-star"></i></p>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/jennierubyjane/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@BLACKPINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com/jennierubyjane" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.tiktok.com/@jennierubyjane" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://open.spotify.com/artist/250b0Wlc5Vk0CoUsaCY84M" target="_blank"><i class="fab fa-spotify"></i></a>
+        </div>
+        <p>🖤💗 Создано Лейлой — мега-фансайт Jennie Kim | 2025 | Коллаборации мечты by aslanchik & leila</p>
+        <p style="margin-top: 10px; font-size:0.75rem;">📁 Файлы: Jennie1.gif, bp1-4.gif, central.gif, sasuke.gif, ben.gif, blum.gif, neymar.gif, weekend.gif, billie.gif, ariana.gif, dragon.gif + коллаборации: jude.gif, ronaldo.gif, mbappe.gif, vini.gif, carti.gif, rihanna.gif, lamar.gif, zara.gif + MP3 треки</p>
+    </footer>
+</div>
+
+<script>
+    // ========== ГОЛОС ЛЕЙЛЫ С ПОЛЗУНКОМ ==========
+    const leilaAudio = document.getElementById('leilaAudio');
+    const playVoiceBtn = document.getElementById('playLeilaVoiceBtn');
+    const voiceStatus = document.getElementById('voiceStatus');
+    const voiceProgressFill = document.getElementById('voiceProgressFill');
+    const voiceProgressWrapper = document.getElementById('voiceProgressWrapper');
+    const voiceCurrentTimeSpan = document.getElementById('voiceCurrentTime');
+    const voiceDurationSpan = document.getElementById('voiceDuration');
+
+    // Функция для остановки музыки
+    function stopAllMusic() {
+        if (currentAudio && isPlaying) {
+            currentAudio.pause();
+            isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            applyPulseEffect(false);
+        }
+    }
+
+    function formatVoiceTime(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function updateVoiceProgress() {
+        if (leilaAudio.duration && !isNaN(leilaAudio.duration)) {
+            const percent = (leilaAudio.currentTime / leilaAudio.duration) * 100;
+            voiceProgressFill.style.width = `${percent}%`;
+            voiceCurrentTimeSpan.textContent = formatVoiceTime(leilaAudio.currentTime);
+            voiceDurationSpan.textContent = formatVoiceTime(leilaAudio.duration);
+        }
+    }
+
+    function voiceSeek(e) {
+        if (leilaAudio.duration && !isNaN(leilaAudio.duration)) {
+            const rect = voiceProgressWrapper.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percent = clickX / rect.width;
+            leilaAudio.currentTime = percent * leilaAudio.duration;
+        }
+    }
+
+    if (playVoiceBtn && leilaAudio) {
+        playVoiceBtn.addEventListener('click', () => {
+            if (leilaAudio.paused) {
+                // При запуске голосового сообщения останавливаем музыку
+                stopAllMusic();
+                leilaAudio.play().catch(e => {
+                    voiceStatus.innerHTML = "❌ Файл leila.mp3 не найден! Добавьте его в папку с сайтом.";
+                });
+                playVoiceBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                voiceStatus.innerHTML = "🎧 Слушаем Лейлу — она рассказывает о Jennie, Lisa, Jisoo и Rosé...";
+            } else {
+                leilaAudio.pause();
+                playVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+                voiceStatus.innerHTML = "⏸ Голосовое сообщение остановлено. Нажмите ▶, чтобы продолжить.";
+            }
+        });
+
+        leilaAudio.addEventListener('loadedmetadata', () => {
+            voiceDurationSpan.textContent = formatVoiceTime(leilaAudio.duration);
+        });
+        leilaAudio.addEventListener('timeupdate', updateVoiceProgress);
+        leilaAudio.addEventListener('ended', () => {
+            playVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            voiceStatus.innerHTML = "✅ Голосовое сообщение завершено. Лейла передала всю любовь участницам! 💖";
+            voiceProgressFill.style.width = '0%';
+            voiceCurrentTimeSpan.textContent = '0:00';
+        });
+        leilaAudio.onerror = () => {
+            voiceStatus.innerHTML = "⚠️ Файл leila.mp3 отсутствует! Поместите его в папку с сайтом.";
+        };
+        if (voiceProgressWrapper) {
+            voiceProgressWrapper.addEventListener('click', voiceSeek);
+        }
+    }
+    
+    // ========== КНОПКА СКРОЛЛИТ К РАЗДЕЛУ ФАКТОВ ==========
+    document.getElementById('jennieFactBtn').onclick = () => {
+        const factsSection = document.getElementById('facts');
+        if (factsSection) {
+            factsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            factsSection.style.transition = 'box-shadow 0.3s ease';
+            factsSection.style.boxShadow = '0 0 30px rgba(255, 68, 160, 0.6)';
+            setTimeout(() => {
+                factsSection.style.boxShadow = '';
+            }, 1500);
+        }
+    };
+    
+    document.getElementById('soloTrigger').onclick = () => alert("🎤 SOLO by Jennie — 1 млрд просмотров! 140+ млн подписчиков!");
+    
+    // ========== МУЗЫКАЛЬНЫЙ ПЛЕЕР ==========
+    const tracks = [
+        { name: "🎤 JENNIE - SOLO", file: "jennie_solo.mp3", icon: "fa-microphone-alt" },
+        { name: "💕 JENNIE - One Of The Girls", file: "jennie_youandme.mp3", icon: "fa-heart" },
+        { name: "👑 JENNIE - Mantra", file: "jennie_mantra.mp3", icon: "fa-crown" },
+        { name: "🧘 JENNIE - ZEN", file: "jennie_zen.mp3", icon: "fa-peace" },
+        { name: "🌆 JENNIE - SEOUL CITY", file: "jennie_seoul.mp3", icon: "fa-city" }
+    ];
+    
+    let currentTrackIndex = 0;
+    let currentAudio = null;
+    let isPlaying = false;
+    
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const stopMusicBtn = document.getElementById('stopMusicBtn');
+    const currentTrackNameEl = document.getElementById('currentTrackName');
+    const progressFill = document.getElementById('progressFill');
+    const progressBarWrapper = document.getElementById('progressBarWrapper');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const playlistGrid = document.getElementById('playlistGrid');
+    const playerContainer = document.getElementById('playerContainer');
+    
+    // Функция для остановки голосового сообщения
+    function stopVoiceMessage() {
+        if (leilaAudio && !leilaAudio.paused) {
+            leilaAudio.pause();
+            playVoiceBtn.innerHTML = '<i class="fas fa-play"></i>';
+            voiceStatus.innerHTML = "⏸ Голосовое сообщение остановлено (включена музыка). Нажмите ▶, чтобы продолжить слушать Лейлу.";
+        }
+    }
+    
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    function updateProgress() {
+        if (currentAudio && currentAudio.duration && !isNaN(currentAudio.duration)) {
+            const percent = (currentAudio.currentTime / currentAudio.duration) * 100;
+            progressFill.style.width = `${percent}%`;
+            currentTimeEl.textContent = formatTime(currentAudio.currentTime);
+            durationEl.textContent = formatTime(currentAudio.duration);
+        }
+    }
+    
+    function applyPulseEffect(apply) {
+        if (apply && isPlaying) {
+            playerContainer.classList.add('playing');
+            playPauseBtn.classList.add('pulsing');
+        } else {
+            playerContainer.classList.remove('playing');
+            playPauseBtn.classList.remove('pulsing');
+        }
+    }
+    
+    function loadTrack(index) {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio = null;
+        }
+        const track = tracks[index];
+        currentTrackNameEl.textContent = track.name;
+        currentAudio = new Audio(track.file);
+        currentAudio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(currentAudio.duration);
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+        });
+        currentAudio.addEventListener('timeupdate', updateProgress);
+        currentAudio.addEventListener('ended', () => { nextTrack(); });
+        currentAudio.addEventListener('error', () => {
+            currentTrackNameEl.textContent = `❌ ${track.name} (файл не найден)`;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            isPlaying = false;
+            applyPulseEffect(false);
+        });
+        document.querySelectorAll('.playlist-item').forEach((item, i) => {
+            if (i === index) item.classList.add('active');
+            else item.classList.remove('active');
+        });
+    }
+    
+    function playCurrentTrack() {
+        if (currentAudio) {
+            // При запуске музыки останавливаем голосовое сообщение
+            stopVoiceMessage();
+            currentAudio.play().catch(e => {});
+            isPlaying = true;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            applyPulseEffect(true);
+        }
+    }
+    
+    function pauseCurrentTrack() {
+        if (currentAudio) {
+            currentAudio.pause();
+            isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            applyPulseEffect(false);
+        }
+    }
+    
+    function togglePlayPause() {
+        if (!currentAudio) {
+            loadTrack(currentTrackIndex);
+            playCurrentTrack();
+        } else if (isPlaying) {
+            pauseCurrentTrack();
+        } else {
+            playCurrentTrack();
+        }
+    }
+    
+    function nextTrack() {
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playCurrentTrack();
+    }
+    
+    function prevTrack() {
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        loadTrack(currentTrackIndex);
+        playCurrentTrack();
+    }
+    
+    function stopMusic() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+            currentTrackNameEl.textContent = tracks[currentTrackIndex].name;
+            applyPulseEffect(false);
+        }
+    }
+    
+    function seekTo(e) {
+        if (currentAudio && currentAudio.duration && !isNaN(currentAudio.duration)) {
+            const rect = progressBarWrapper.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percent = clickX / rect.width;
+            currentAudio.currentTime = percent * currentAudio.duration;
+        }
+    }
+    
+    function createPlaylist() {
+        tracks.forEach((track, index) => {
+            const item = document.createElement('div');
+            item.className = 'playlist-item';
+            item.innerHTML = `<i class="fas ${track.icon}"></i> ${track.name}`;
+            item.onclick = () => {
+                currentTrackIndex = index;
+                loadTrack(currentTrackIndex);
+                playCurrentTrack();
+            };
+            playlistGrid.appendChild(item);
+        });
+    }
+    
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    prevBtn.addEventListener('click', prevTrack);
+    nextBtn.addEventListener('click', nextTrack);
+    stopMusicBtn.addEventListener('click', stopMusic);
+    progressBarWrapper.addEventListener('click', seekTo);
+    
+    createPlaylist();
+    loadTrack(0);
+    
+    // Цитаты Лейлы
+    const leylaQuotes = [
+        { text: "Ты не ты когда нет Дженни.", author: "— Лейла" },
+        { text: "Ничего никогда не бойся - пробуй.", author: "— Лейла" },
+        { text: "Hala Madrid y nada mas — puta barca. Но Jennie выше любого дерби!", author: "— Лейла" },
+        { text: "Даже самый капризный ребёнок познав боль может стать взрослым.", author: "— Лейла" }
+    ];
+    let qIndex = 0;
+    const quoteEl = document.getElementById('quoteText');
+    const authorEl = document.getElementById('quoteAuthor');
+    function updateQ() { quoteEl.innerText = leylaQuotes[qIndex].text; authorEl.innerText = leylaQuotes[qIndex].author; }
+    document.getElementById('prevQuoteBtn')?.addEventListener('click', () => { qIndex = (qIndex - 1 + leylaQuotes.length) % leylaQuotes.length; updateQ(); });
+    document.getElementById('nextQuoteBtn')?.addEventListener('click', () => { qIndex = (qIndex + 1) % leylaQuotes.length; updateQ(); });
+    updateQ();
+    
+    // анимация
+    const animated = document.querySelectorAll('.animate-on-scroll');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    animated.forEach(el => obs.observe(el));
+    
+    console.log("✨ Готово! Добавлено: при запуске музыки голосовое останавливается, при запуске голоса музыка останавливается!");
+</script>
+</body>
+</html>
